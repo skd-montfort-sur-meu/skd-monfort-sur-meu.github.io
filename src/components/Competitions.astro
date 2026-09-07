@@ -26,6 +26,7 @@ today.setHours(0, 0, 0, 0);
 const upcoming = events.filter((e) => new Date(`${e.date}T00:00:00`) >= today);
 const past = events.filter((e) => new Date(`${e.date}T00:00:00`) < today);
 const links = competitionsData.links;
+const base = import.meta.env.BASE_URL;
 ---
 <div class="pt-16">
   <section class="bg-gray-900 text-white relative overflow-hidden">
@@ -138,7 +139,7 @@ const links = competitionsData.links;
           Une question sur les compétitions ou les inscriptions ?
         </p>
         <a
-          href="/#contact"
+          href={`${base}#contact`}
           class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded transition-colors duration-200"
         >
           Contacter le club

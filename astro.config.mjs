@@ -6,6 +6,9 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://skd-monfort-sur-meu.github.io',
+  base: '/website',
+  trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()]
   },

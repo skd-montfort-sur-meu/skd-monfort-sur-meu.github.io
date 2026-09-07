@@ -1,17 +1,18 @@
 ---
+const base = import.meta.env.BASE_URL;
 const navLinks = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Karaté', href: '/karate' },
-  { label: 'Tarifs', href: '/#tarifs' },
-  { label: 'Compétitions', href: '/competitions' },
-  { label: 'Contact', href: '/#contact' },
-  { label: 'Photos', href: '/photos' },
+  { label: 'Accueil', href: `${base}` },
+  { label: 'Karaté', href: `${base}karate` },
+  { label: 'Tarifs', href: `${base}#tarifs` },
+  { label: 'Compétitions', href: `${base}competitions` },
+  { label: 'Contact', href: `${base}#contact` },
+  { label: 'Photos', href: `${base}photos` },
 ];
 ---
 <header class="fixed top-0 left-0 right-0 z-50 bg-white">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="flex items-center gap-3">
+      <a href={`${base}`} class="flex items-center gap-3">
         <span class="text-2xl font-bold text-gray-900 tracking-tight">
           <span class="text-red-600">Shotokan</span> Karaté-dō
         </span>

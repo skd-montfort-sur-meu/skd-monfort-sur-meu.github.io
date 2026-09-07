@@ -3,6 +3,7 @@ import { readdirSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Icon } from 'astro-icon/components';
 
+const base = import.meta.env.BASE_URL;
 const galleryDir = join(process.cwd(), 'public', 'images', 'gallery');
 const manifestFile = join(process.cwd(), 'public', 'images', 'gallery', 'photos.json');
 
@@ -11,7 +12,7 @@ let photos = [];
 if (existsSync(manifestFile)) {
   try {
     const manifest = JSON.parse(readFileSync(manifestFile, 'utf-8'));
-    photos = manifest.map((p) => ({ src: p.src, alt: 'Photo du club' }));
+    photos = manifest.map((p) => ({ src: `${base}${p.src.replace(/^\//, '')}`, alt: 'Photo du club' }));
   } catch {
     photos = [];
   }
@@ -26,7 +27,7 @@ if (photos.length === 0) {
       if (dateA && dateB) return b.localeCompare(a);
       return a.localeCompare(b);
     });
-  photos = files.map((f) => ({ src: `/images/gallery/${f}`, alt: 'Photo du club' }));
+  photos = files.map((f) => ({ src: `${base}images/gallery/${f}`, alt: 'Photo du club' }));
 }
 ---
 <section class="py-20 bg-white pt-28">

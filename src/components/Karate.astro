@@ -75,6 +75,7 @@ const dojoWords = [
   { term: 'Yoi', def: 'Soyez prêt' },
   { term: 'Kamae', def: 'En garde' },
 ];
+const base = import.meta.env.BASE_URL;
 ---
 <div class="pt-16">
   <section class="bg-gray-900 text-white relative overflow-hidden">
@@ -381,13 +382,13 @@ const dojoWords = [
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="/#horaires"
+          href={`${base}#horaires`}
           class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded transition-colors"
         >
           Voir les horaires
         </a>
         <a
-          href="/#tarifs"
+          href={`${base}#tarifs`}
           class="inline-block border border-white/30 hover:border-white text-white font-semibold px-8 py-3 rounded transition-colors"
         >
           Découvrir les tarifs
