@@ -1,0 +1,124 @@
+---
+import { Icon } from 'astro-icon/components';
+import { existsSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import competitionsData from '../content/config/competitions.json';
+
+const formatFr = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' });
+const formatMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' });
+const formatWeekday = new Intl.DateTimeFormat('fr-FR', { weekday: 'long' });
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+const events = competitionsData.events
+  .map((event) => {
+    const d = new Date(`${event.date}T00:00:00`);
+    return {
+      ...event,
+      day: d.getDate(),
+      weekday: capitalize(formatWeekday.format(d)),
+      month: capitalize(formatMonth.format(d)),
+      dateLabel: formatFr.format(d),
+    };
+  })
+  .sort((a, b) => a.date.localeCompare(b.date));
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+const upcoming = events.filter((e) => new Date(`${e.date}T00:00:00`) >= today).slice(0, 2);
+
+const galleryDir = join(process.cwd(), 'public', 'images', 'gallery');
+const galleryPhotos = existsSync(galleryDir)
+  ? readdirSync(galleryDir)
+      .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f))
+      .sort((a, b) => {
+        const dateA = a.match(/^(\d{4}-\d{2}-\d{2})/);
+        const dateB = b.match(/^(\d{4}-\d{2}-\d{2})/);
+        if (dateA && dateB) return b.localeCompare(a);
+        return a.localeCompare(b);
+      })
+      .slice(0, 3)
+  : [];
+---
+{upcoming.length > 0 && (
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Prochaines <span class="text-red-600">compétitions</span>
+        </h2>
+        <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+      </div>
+
+      <div class="space-y-4">
+        {upcoming.map((event) => (
+          <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 md:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="bg-red-600 text-white flex items-center justify-center rounded-xl w-20 h-14 flex-shrink-0">
+              <span class="text-xl font-bold">{event.day}</span>
+              <span class="text-xs uppercase tracking-wide ml-1">{event.month}</span>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-semibold text-gray-900">{event.title}</h3>
+              <p class="text-sm text-gray-500">{event.categories}</p>
+              <p class="text-sm text-gray-400 mt-1">
+                <Icon name="lucide:map-pin" class="w-4 h-4 inline text-gray-400 -mt-0.5" /> {event.location}
+              </p>
+            </div>
+            <span class="text-sm text-gray-400">{event.dateLabel}</span>
+          </article>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href="/competitions"
+          class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded transition-colors duration-200"
+        >
+          Voir toutes les compétitions
+          <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+{galleryPhotos.length > 0 && (
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Moments du <span class="text-red-600">club</span>
+        </h2>
+        <p class="text-gray-600">Quelques instants de notre association</p>
+        <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {galleryPhotos.map((photo) => (
+          <a
+            href="/photos"
+            class="group relative block w-full aspect-[4/5] overflow-hidden rounded-lg bg-gray-100"
+          >
+            <img
+              src={`/images/gallery/${photo}`}
+              alt="Photo du club"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href="/photos"
+          class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded transition-colors duration-200"
+        >
+          Voir la galerie photos
+          <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+)}

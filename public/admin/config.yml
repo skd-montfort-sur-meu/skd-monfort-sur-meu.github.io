@@ -1,0 +1,124 @@
+backend:
+  name: git-gateway
+  branch: main
+  # fonctionne en local grâce à local_backend (voir ci-dessous)
+  accept_roles:
+    - admin
+    - editor
+
+# Proxie local vers le dépôt git (exécuter `npx decap-server`)
+local_backend: true
+
+locale: "fr"
+
+media_folder: "public/images/gallery"
+public_folder: "/images/gallery"
+
+collections:
+  - name: "club"
+    label: "Club"
+    description: "Informations et données de présentation du club."
+    files:
+      - name: "informations"
+        label: "Informations générales"
+        file: "src/content/config/club.json"
+        format: "json"
+        fields:
+          - { label: "Nom", name: "name", widget: "string" }
+          - { label: "Nom complet", name: "fullName", widget: "string" }
+          - { label: "Adresse du dojo", name: "address", widget: "string" }
+          - { label: "E-mail", name: "email", widget: "string" }
+          - { label: "Téléphone 1", name: "phone", widget: "string" }
+          - { label: "Téléphone 2", name: "phone2", widget: "string" }
+          - { label: "Facebook", name: "facebook", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+          - { label: "Président(e)", name: "president", widget: "string" }
+          - { label: "Trésorier(ère)", name: "treasurer", widget: "string" }
+          - { label: "Secrétaire", name: "secretary", widget: "string" }
+
+          - label: "Enseignants"
+            name: "teachers"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.grade}}"
+            fields:
+              - { label: "Nom", name: "name", widget: "string" }
+              - { label: "Grade", name: "grade", widget: "text" }
+              - { label: "Rôle", name: "description", widget: "string" }
+
+          - label: "Horaires"
+            name: "schedule"
+            widget: "list"
+            summary: "{{fields.day}} {{fields.time}} — {{fields.audience}}"
+            fields:
+              - label: "Jour"
+                name: "day"
+                widget: "select"
+                options:
+                  - { label: "Lundi", value: "Lundi" }
+                  - { label: "Mardi", value: "Mardi" }
+                  - { label: "Mercredi", value: "Mercredi" }
+                  - { label: "Jeudi", value: "Jeudi" }
+                  - { label: "Vendredi", value: "Vendredi" }
+                  - { label: "Samedi", value: "Samedi" }
+                  - { label: "Dimanche", value: "Dimanche" }
+              - { label: "Horaires", name: "time", widget: "string" }
+              - { label: "Public concerné", name: "audience", widget: "string" }
+
+          - label: "Tarifs"
+            name: "prices"
+            widget: "list"
+            summary: "{{fields.category}} — {{fields.price}}€"
+            fields:
+              - { label: "Catégorie", name: "category", widget: "string" }
+              - label: "Prix (€)"
+                name: "price"
+                widget: "number"
+                value_type: "int"
+                min: 0
+              - { label: "Description", name: "description", widget: "string" }
+
+          - label: "Adhésion"
+            name: "membership"
+            widget: "object"
+            fields:
+              - label: "Prix (€)"
+                name: "price"
+                widget: "number"
+                value_type: "int"
+                min: 0
+              - { label: "Description", name: "description", widget: "string" }
+
+  - name: "competitions"
+    label: "Compétitions"
+    description: "Prochaines échéances et compétitions du club."
+    files:
+      - name: "evenements"
+        label: "Événements"
+        file: "src/content/config/competitions.json"
+        format: "json"
+        fields:
+          - label: "Événements"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Épreuves / Catégories", name: "categories", widget: "string" }
+              - label: "Date"
+                name: "date"
+                widget: "datetime"
+                format: "yyyy-MM-dd"
+                date_format: true
+                time_format: false
+              - { label: "Heure / Détails", name: "time", widget: "string" }
+              - { label: "Lieu", name: "location", widget: "string" }
+              - { label: "Adresse", name: "address", widget: "string" }
+              - label: "Icône"
+                name: "icon"
+                widget: "select"
+                default: "lucide:trophy"
+                options:
+                  - { label: "Trophée", value: "lucide:trophy" }
+                  - { label: "Médaille", value: "lucide:medal" }
+                  - { label: "Calendrier", value: "lucide:calendar-days" }
+                  - { label: "Groupe", value: "lucide:users" }

@@ -1,0 +1,56 @@
+---
+import clubData from '../content/config/club.json';
+import { Icon } from 'astro-icon/components';
+---
+<section id="horaires" class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Nos <span class="text-red-600">Horaires</span>
+      </h2>
+      <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+    </div>
+
+    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm">
+      <table class="w-full">
+        <thead>
+          <tr class="bg-gray-800 text-white">
+            <th class="px-6 py-4 text-left font-semibold">Jour</th>
+            <th class="px-6 py-4 text-left font-semibold">Horaires</th>
+            <th class="px-6 py-4 text-left font-semibold">Public</th>
+          </tr>
+        </thead>
+        <tbody>
+          {clubData.schedule.map((lesson, index) => (
+            <tr class={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+              <td class="px-6 py-4 font-medium text-gray-900">
+                <span class="inline-flex items-center gap-2">
+                  <Icon name="lucide:calendar-days" class="w-4 h-4 text-red-600" />
+                  {lesson.day}
+                </span>
+              </td>
+              <td class="px-6 py-4 text-gray-700">
+                <span class="inline-flex items-center gap-2">
+                  <Icon name="lucide:clock" class="w-4 h-4 text-red-600" />
+                  {lesson.time}
+                </span>
+              </td>
+              <td class="px-6 py-4 text-gray-600">
+                <span class="inline-flex items-center gap-2">
+                  <Icon name="lucide:users" class="w-4 h-4 text-red-600" />
+                  {lesson.audience}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-gray-500 text-sm">
+        Le club est affilié à la Fédération Française de Karaté et a toutes les homologations nécessaires.
+      </p>
+    </div>
+  </div>
+</section>

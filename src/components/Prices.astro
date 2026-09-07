@@ -1,0 +1,45 @@
+---
+import clubData from '../content/config/club.json';
+import { Icon } from 'astro-icon/components';
+
+const categoryIcons = {
+  'Enfants': 'lucide:baby',
+  'Adolescents': 'lucide:sparkles',
+  'Adultes': 'lucide:user',
+};
+---
+<section id="tarifs" class="py-20 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Nos <span class="text-red-600">Tarifs</span>
+      </h2>
+      <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      {clubData.prices.map((price) => (
+        <div class="bg-white rounded-xl shadow-md p-8 text-center hover:shadow-lg transition-shadow duration-300">
+          <div class="w-14 h-14 mx-auto mb-4 bg-red-50 rounded-full flex items-center justify-center">
+            <Icon name={categoryIcons[price.category]} class="w-7 h-7 text-red-600" />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{price.category}</h3>
+          <p class="text-gray-500 text-sm mb-4">{price.description}</p>
+          <div class="text-4xl font-bold text-red-600 mb-4">
+            {price.price}€
+          </div>
+          <p class="text-gray-400 text-sm">par saison</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md p-6 text-center">
+      <p class="inline-flex items-center gap-2 text-gray-700">
+        <Icon name="lucide:badge-percent" class="w-5 h-5 text-red-600" />
+        À ces tarifs s'ajoute 
+        <span class="font-bold text-red-600">{clubData.membership.price}€</span> 
+        d'adhésion au club — {clubData.membership.description.toLowerCase()}.
+      </p>
+    </div>
+  </div>
+</section>

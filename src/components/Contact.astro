@@ -1,0 +1,111 @@
+---
+import clubData from '../content/config/club.json';
+import { Icon } from 'astro-icon/components';
+---
+<section id="contact" class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Nous <span class="text-red-600">Contacter</span>
+      </h2>
+      <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-gray-50 rounded-xl p-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-6">Coordonnées</h3>
+        
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Icon name="lucide:map-pin" class="w-5 h-5 text-red-600" />
+            </div>
+            <div>
+              <p class="font-medium text-gray-900">Adresse</p>
+              <p class="text-gray-600">{clubData.address}</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Icon name="lucide:mail" class="w-5 h-5 text-red-600" />
+            </div>
+            <div>
+              <p class="font-medium text-gray-900">Email</p>
+              <a href={`mailto:${clubData.email}`} class="text-red-600 hover:text-red-700">
+                {clubData.email}
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Icon name="lucide:phone" class="w-5 h-5 text-red-600" />
+            </div>
+            <div>
+              <p class="font-medium text-gray-900">Téléphone</p>
+              <a href={`tel:${clubData.phone.replace(/\s/g, '')}`} class="text-gray-600 hover:text-red-600">
+                {clubData.phone}
+              </a>
+              <span class="text-gray-400 mx-1">/</span>
+              <a href={`tel:${clubData.phone2.replace(/\s/g, '')}`} class="text-gray-600 hover:text-red-600">
+                {clubData.phone2}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <p class="font-medium text-gray-900 mb-3">Réseaux sociaux</p>
+          <div class="flex gap-3">
+            <a
+              href={clubData.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              title="Facebook"
+              class="w-10 h-10 bg-red-100 hover:bg-red-200 flex items-center justify-center rounded-full transition-colors duration-200"
+            >
+              <Icon name="lucide:facebook" class="w-5 h-5 text-red-600" />
+            </a>
+            <a
+              href={clubData.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              title="Instagram"
+              class="w-10 h-10 bg-red-100 hover:bg-red-200 flex items-center justify-center rounded-full transition-colors duration-200"
+            >
+              <Icon name="lucide:instagram" class="w-5 h-5 text-red-600" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-6">Le Bureau</h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center py-3 border-b border-gray-200">
+            <span class="text-gray-600">Président</span>
+            <span class="font-medium text-gray-900">{clubData.president}</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-200">
+            <span class="text-gray-600">Trésorier</span>
+            <span class="font-medium text-gray-900">{clubData.treasurer}</span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="text-gray-600">Secrétaire</span>
+            <span class="font-medium text-gray-900">{clubData.secretary}</span>
+          </div>
+        </div>
+
+        <div class="mt-8 p-4 bg-white rounded-lg">
+          <p class="text-sm text-gray-500">
+            <strong class="text-gray-700">Bénévoles :</strong> Le club fonctionne avec le soutien 
+            de bénévoles engagés. N'hésitez pas à nous contacter pour nous aider !
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+{
+  "president": "Pierrick Lemou",
+  "treasurer": "Ismaël Delaunay",
+  "phone2": "06 27 63 23 90",
+  "facebook": "https://www.facebook.com/Shotokan-Karate-Do-Montfort-sMeu-502576590248219",
+  "prices": [
+    {
+      "category": "Enfants",
+      "price": 130,
+      "description": "De 6 à 12 ans"
+    },
+    {
+      "category": "Adolescents",
+      "price": 150,
+      "description": "De 12 à 17 ans"
+    },
+    {
+      "category": "Adultes",
+      "price": 180,
+      "description": "18 ans et plus"
+    }
+  ],
+  "name": "Shotokan Karaté Montfort",
+  "phone": "06 72 08 56 81",
+  "teachers": [
+    {
+      "name": "Pierrick Lemou",
+      "grade": "5ème Dan Karaté BPJEPS",
+      "description": "Fondateur et responsable pédagogique du club"
+    },
+    {
+      "name": "Frédéric Gelin",
+      "grade": "3ème Dan Karaté BPJEPS, 1er Dan Judo",
+      "description": "Enseignant"
+    },
+    {
+      "name": "Victoria Bureau",
+      "grade": "2ème Dan Karaté DIF",
+      "description": "Enseignante"
+    }
+  ],
+  "instagram": "https://www.instagram.com/skdmontfort/",
+  "address": "Dojo Coesec, Route d'Iffendic, 35160 Montfort-sur-Meu",
+  "membership": {
+    "price": 20,
+    "description": "Adhésion au club, une seule par famille"
+  },
+  "schedule": [
+    {
+      "day": "Mardi",
+      "time": "18h15 - 19h30",
+      "audience": "Enfants (6-12 ans) et adolescents (12-17 ans)"
+    },
+    {
+      "day": "Mardi",
+      "time": "19h30 - 21h00",
+      "audience": "Adultes"
+    },
+    {
+      "day": "Jeudi",
+      "time": "10h00 - 12h00",
+      "audience": "Seniors — Espace Sport'Iff, Iffendic"
+    },
+    {
+      "day": "Jeudi",
+      "time": "18h15 - 19h30",
+      "audience": "Enfants (6-12 ans) et adolescents (12-17 ans)"
+    },
+    {
+      "day": "Jeudi",
+      "time": "19h30 - 21h00",
+      "audience": "Adultes"
+    }
+  ],
+  "secretary": "Christophe Segouin",
+  "fullName": "Shotokan Karaté-dō Montfort-sur-Meu",
+  "email": "skdmontfort@gmail.com"
+}

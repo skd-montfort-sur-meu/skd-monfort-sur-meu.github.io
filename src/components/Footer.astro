@@ -1,0 +1,48 @@
+---
+import clubData from '../content/config/club.json';
+---
+<footer class="bg-gray-50 text-gray-600 py-12 border-t border-gray-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 class="text-gray-900 font-bold text-lg mb-4">
+          <span class="text-red-600">Shotokan</span> Karaté-dō Montfort
+        </h3>
+        <p class="text-sm">
+          Club de karaté affilié à la Fédération Française de Karaté. 
+          Cours pour enfants, adolescents et adultes.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-gray-900 font-semibold mb-4">Navigation</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="hover:text-gray-900 transition-colors">Accueil</a></li>
+          <li><a href="/karate" class="hover:text-gray-900 transition-colors">Karaté</a></li>
+          <li><a href="/#tarifs" class="hover:text-gray-900 transition-colors">Tarifs</a></li>
+          <li><a href="/competitions" class="hover:text-gray-900 transition-colors">Compétitions</a></li>
+          <li><a href="/photos" class="hover:text-gray-900 transition-colors">Photos</a></li>
+          <li><a href="/#contact" class="hover:text-gray-900 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-gray-900 font-semibold mb-4">Contact</h4>
+        <ul class="space-y-2 text-sm">
+          <li>Dojo Coesec</li>
+          <li>Route d'Iffendic</li>
+          <li>35160 Montfort-sur-Meu</li>
+          <li class="pt-2">
+            <a href={`mailto:${clubData.email}`} class="hover:text-gray-900 transition-colors">
+              {clubData.email}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-200 pt-8 text-center text-sm">
+      <p>&copy; {new Date().getFullYear()} Shotokan Karaté Montfort. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>

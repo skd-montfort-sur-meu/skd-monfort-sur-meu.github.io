@@ -1,0 +1,145 @@
+---
+import { readdirSync, existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { Icon } from 'astro-icon/components';
+
+const galleryDir = join(process.cwd(), 'public', 'images', 'gallery');
+const manifestFile = join(process.cwd(), 'public', 'images', 'gallery', 'photos.json');
+
+let photos = [];
+
+if (existsSync(manifestFile)) {
+  try {
+    const manifest = JSON.parse(readFileSync(manifestFile, 'utf-8'));
+    photos = manifest.map((p) => ({ src: p.src, alt: 'Photo du club' }));
+  } catch {
+    photos = [];
+  }
+}
+
+if (photos.length === 0) {
+  const files = readdirSync(galleryDir)
+    .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f))
+    .sort((a, b) => {
+      const dateA = a.match(/^(\d{4}-\d{2}-\d{2})/);
+      const dateB = b.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (dateA && dateB) return b.localeCompare(a);
+      return a.localeCompare(b);
+    });
+  photos = files.map((f) => ({ src: `/images/gallery/${f}`, alt: 'Photo du club' }));
+}
+---
+<section class="py-20 bg-white pt-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Galerie <span class="text-red-600">Photos</span>
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+        Quelques moments de notre association
+      </p>
+      <div class="w-20 h-1 bg-red-600 mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {photos.map((photo) => (
+        <button
+          type="button"
+          class="group relative block w-full aspect-[4/5] overflow-hidden rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 photo-item cursor-pointer"
+          data-src={photo.src}
+          data-alt={photo.alt}
+        >
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+            <Icon name="lucide:zoom-in" class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          </div>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<div
+  id="lightbox"
+  class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 p-4"
+>
+  <button
+    id="lightbox-close"
+    class="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+    aria-label="Fermer"
+  >
+    <Icon name="lucide:x" class="w-8 h-8" />
+  </button>
+  <button
+    id="lightbox-prev"
+    class="absolute left-4 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+    aria-label="Précédente"
+  >
+    <Icon name="lucide:chevron-left" class="w-8 h-8" />
+  </button>
+  <button
+    id="lightbox-next"
+    class="absolute right-4 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+    aria-label="Suivante"
+  >
+    <Icon name="lucide:chevron-right" class="w-8 h-8" />
+  </button>
+  <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-full object-contain" />
+</div>
+
+<script>
+  const items = Array.from(document.querySelectorAll<HTMLButtonElement>('.photo-item'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateImage();
+    lightbox?.classList.remove('hidden');
+    lightbox?.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox?.classList.add('hidden');
+    lightbox?.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function updateImage() {
+    const item = items[currentIndex];
+    if (item && lightboxImg) {
+      lightboxImg.src = item.dataset.src ?? '';
+      lightboxImg.alt = item.dataset.alt ?? '';
+    }
+  }
+
+  function next() { currentIndex = (currentIndex + 1) % items.length; updateImage(); }
+  function prev() { currentIndex = (currentIndex - 1 + items.length) % items.length; updateImage(); }
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(i));
+  });
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', prev);
+  lightboxNext?.addEventListener('click', next);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox?.classList.contains('hidden')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    }
+  });
+</script>
