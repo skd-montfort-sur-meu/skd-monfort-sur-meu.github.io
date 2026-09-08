@@ -2,14 +2,7 @@ backend:
   name: github
   repo: skd-montfort-sur-meu/skd-montfort-sur-meu.github.io
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-  # fonctionne en local grâce à local_backend (voir ci-dessous)
-  accept_roles:
-    - admin
-    - editor
 
-# Proxie local vers le dépôt git (exécuter `npx decap-server`)
 local_backend: true
 
 locale: "fr"
