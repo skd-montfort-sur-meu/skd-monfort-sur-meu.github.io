@@ -32,10 +32,10 @@ const base = import.meta.env.BASE_URL;
   <section class="bg-gray-900 text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 80% 30%, #fff 0%, transparent 60%), radial-gradient(circle at 20% 80%, #C41E3A 0%, transparent 50%);"></div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-      <p class="text-red-500 font-medium tracking-widest uppercase text-sm mb-4">Compétitions</p>
-      <h1 class="text-4xl sm:text-6xl font-bold mb-6">Les échéances <span class="text-red-500">du club</span></h1>
+      <p class="text-red-500 font-medium tracking-widest uppercase text-sm mb-4">{competitionsData.header.eyebrow}</p>
+      <h1 class="text-4xl sm:text-6xl font-bold mb-6">{competitionsData.header.titlePrefix} <span class="text-red-500">{competitionsData.header.titleHighlight}</span></h1>
       <p class="text-xl text-gray-300 font-light max-w-3xl mx-auto">
-        Coupes, championnats et rendez-vous officiels de la saison.
+        {competitionsData.header.subtitle}
       </p>
     </div>
   </section>

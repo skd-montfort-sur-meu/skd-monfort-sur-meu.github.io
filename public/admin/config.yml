@@ -31,6 +31,7 @@ collections:
           - { label: "Président(e)", name: "president", widget: "string" }
           - { label: "Trésorier(ère)", name: "treasurer", widget: "string" }
           - { label: "Secrétaire", name: "secretary", widget: "string" }
+          - { label: "Description (pied de page)", name: "footerDescription", widget: "text" }
 
           - label: "Présentation (page d'accueil)"
             name: "about"
@@ -124,6 +125,16 @@ collections:
         file: "src/content/config/competitions.json"
         format: "json"
         fields:
+          - label: "Bannière"
+            name: "header"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+              - { label: "Titre (début)", name: "titlePrefix", widget: "string" }
+              - { label: "Titre (accent)", name: "titleHighlight", widget: "string" }
+              - { label: "Sous-titre", name: "subtitle", widget: "string" }
+
           - label: "Événements"
             name: "events"
             widget: "list"

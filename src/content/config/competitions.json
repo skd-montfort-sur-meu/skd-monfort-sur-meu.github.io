@@ -1,4 +1,10 @@
 {
+  "header": {
+    "eyebrow": "Compétitions",
+    "titlePrefix": "Les échéances",
+    "titleHighlight": "du club",
+    "subtitle": "Coupes, championnats et rendez-vous officiels de la saison."
+  },
   "events": [
     {
       "title": "Coupe & Championnat départementaux",

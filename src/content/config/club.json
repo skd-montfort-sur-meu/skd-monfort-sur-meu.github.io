@@ -86,5 +86,6 @@
     { "icon": "lucide:heart-pulse", "title": "Bien-être", "desc": "Corps et esprit en harmonie" },
     { "icon": "lucide:users", "title": "Convivialité", "desc": "Chacun progresse à son rythme" },
     { "icon": "lucide:award", "title": "Enseignants gradés", "desc": "Diplomés et passionnés" }
-  ]
+  ],
+  "footerDescription": "Club de karaté affilié à la Fédération Française de Karaté. Cours pour enfants, adolescents et adultes."
 }
