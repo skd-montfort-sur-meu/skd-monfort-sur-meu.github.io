@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: skd-montfort-sur-meu/skd-montfort-sur-meu.github.io
   branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
   # fonctionne en local grâce à local_backend (voir ci-dessous)
   accept_roles:
     - admin
