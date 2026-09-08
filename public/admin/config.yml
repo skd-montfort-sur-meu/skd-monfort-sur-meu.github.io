@@ -32,6 +32,21 @@ collections:
           - { label: "Trésorier(ère)", name: "treasurer", widget: "string" }
           - { label: "Secrétaire", name: "secretary", widget: "string" }
 
+          - label: "Présentation (page d'accueil)"
+            name: "about"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Titre — début", name: "titlePrefix", widget: "string" }
+              - { label: "Titre — surligné", name: "titleHighlight", widget: "string" }
+              - label: "Contenu"
+                name: "body"
+                widget: "richtext"
+                hint: "Séparez vos paragraphes par une ligne vide."
+              - label: "Citation"
+                name: "quote"
+                widget: "richtext"
+
           - label: "Enseignants"
             name: "teachers"
             widget: "list"
