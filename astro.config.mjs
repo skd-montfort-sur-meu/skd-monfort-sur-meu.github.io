@@ -6,7 +6,7 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://skd-montfort-sur-meu.netlify.app',
+  site: 'https://skd-monfort-sur-meu.github.io',
   vite: {
     plugins: [tailwindcss()]
   },
