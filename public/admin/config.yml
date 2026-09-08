@@ -47,6 +47,22 @@ collections:
                 name: "quote"
                 widget: "richtext"
 
+          - label: "Points forts (cartes)"
+            name: "features"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.desc}}"
+            fields:
+              - label: "Icône"
+                name: "icon"
+                widget: "select"
+                options:
+                  - { label: "Bouclier (auto-défense)", value: "lucide:shield" }
+                  - { label: "Cœur (bien-être)", value: "lucide:heart-pulse" }
+                  - { label: "Personnes (convivialité)", value: "lucide:users" }
+                  - { label: "Médaille (enseignement)", value: "lucide:award" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "string" }
+
           - label: "Enseignants"
             name: "teachers"
             widget: "list"

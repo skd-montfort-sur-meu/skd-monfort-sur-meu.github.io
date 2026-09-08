@@ -4,13 +4,7 @@ import clubData from '../content/config/club.json';
 import { md, mdInline } from '../lib/markdown';
 
 const about = clubData.about;
-
-const features = [
-  { icon: 'lucide:shield', title: 'Auto-défense', desc: 'Un système d\'auto-défense efficace' },
-  { icon: 'lucide:heart-pulse', title: 'Bien-être', desc: 'Corps et esprit en harmonie' },
-  { icon: 'lucide:users', title: 'Convivialité', desc: 'Chacun progresse à son rythme' },
-  { icon: 'lucide:award', title: 'Enseignants gradés', desc: 'Diplomés et passionnés' },
-];
+const features = clubData.features;
 ---
 <section id="presentation" class="py-20 bg-white">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
