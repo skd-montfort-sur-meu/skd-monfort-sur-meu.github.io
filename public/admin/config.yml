@@ -118,3 +118,146 @@ collections:
                   - { label: "Médaille", value: "lucide:medal" }
                   - { label: "Calendrier", value: "lucide:calendar-days" }
                   - { label: "Groupe", value: "lucide:users" }
+
+  - name: "karate"
+    label: "Karaté"
+    description: "Contenu de la page Karaté : histoire, sensei, katas, vocabulaire et rituel."
+    files:
+      - name: "page"
+        label: "Contenu de la page"
+        file: "src/content/config/karate.json"
+        format: "json"
+        fields:
+          - label: "Héro"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+              - { label: "Titre (début)", name: "titlePrefix", widget: "string" }
+              - { label: "Titre (accent)", name: "titleHighlight", widget: "string" }
+              - { label: "Sous-titre", name: "subtitle", widget: "string" }
+
+          - label: "Histoire du Karaté"
+            name: "history"
+            widget: "object"
+            fields:
+              - { label: "Titre (début)", name: "titlePrefix", widget: "string" }
+              - { label: "Titre (accent)", name: "titleHighlight", widget: "string" }
+              - { label: "Texte", name: "body", widget: "richtext", hint: "Séparez vos paragraphes par une ligne vide." }
+
+          - label: "Cartes"
+            name: "cards"
+            widget: "list"
+            label_singular: "carte"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Icône", name: "icon", widget: "string" }
+              - { label: "Couleur d'en-tête", name: "headerClass", widget: "string" }
+              - { label: "Couleur de l'icône", name: "iconClass", widget: "string" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "body", widget: "richtext" }
+
+          - label: "Sensei Taiji Kase"
+            name: "senseiKase"
+            widget: "object"
+            fields:
+              - { label: "Titre (début)", name: "titlePrefix", widget: "string" }
+              - { label: "Titre (accent)", name: "titleHighlight", widget: "string" }
+              - { label: "Texte", name: "body", widget: "richtext", hint: "Séparez vos paragraphes par une ligne vide." }
+              - { label: "Citation", name: "quote", widget: "richtext" }
+              - { label: "Auteur de la citation", name: "quoteAuthor", widget: "string" }
+
+          - label: "Les Katas"
+            name: "katas"
+            widget: "object"
+            fields:
+              - { label: "Titre (début)", name: "titlePrefix", widget: "string" }
+              - { label: "Titre (accent)", name: "titleHighlight", widget: "string" }
+              - { label: "Texte", name: "body", widget: "richtext", hint: "Séparez vos paragraphes par une ligne vide." }
+              - label: "Points"
+                name: "points"
+                widget: "list"
+                label_singular: "point"
+                summary: "{{fields.text}}"
+                fields:
+                  - { label: "Icône", name: "icon", widget: "string" }
+                  - { label: "Texte", name: "text", widget: "richtext" }
+
+          - label: "Vocabulaire technique"
+            name: "vocabulary"
+            widget: "object"
+            fields:
+              - { label: "Titre (début)", name: "titlePrefix", widget: "string" }
+              - { label: "Titre (accent)", name: "titleHighlight", widget: "string" }
+              - { label: "Introduction", name: "intro", widget: "string" }
+              - label: "Catégories"
+                name: "categories"
+                widget: "list"
+                label_singular: "catégorie"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Titre", name: "title", widget: "string" }
+                  - { label: "Icône", name: "icon", widget: "string" }
+                  - label: "Termes"
+                    name: "items"
+                    widget: "list"
+                    label_singular: "terme"
+                    summary: "{{fields.term}}"
+                    fields:
+                      - { label: "Terme", name: "term", widget: "string" }
+                      - { label: "Définition", name: "def", widget: "string" }
+
+          - label: "Compter jusqu'à 10"
+            name: "counting"
+            widget: "object"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Icône", name: "icon", widget: "string" }
+              - label: "Nombres"
+                name: "numbers"
+                widget: "list"
+                label_singular: "nombre"
+                summary: "{{fields.jp}} → {{fields.fr}}"
+                fields:
+                  - { label: "Japonais", name: "jp", widget: "string" }
+                  - { label: "Français", name: "fr", widget: "string" }
+
+          - label: "Les mots du cours"
+            name: "dojoWords"
+            widget: "object"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Icône", name: "icon", widget: "string" }
+              - label: "Mots"
+                name: "words"
+                widget: "list"
+                label_singular: "mot"
+                summary: "{{fields.term}}"
+                fields:
+                  - { label: "Terme", name: "term", widget: "string" }
+                  - { label: "Définition", name: "def", widget: "string" }
+
+          - label: "Le rituel du salut"
+            name: "ritual"
+            widget: "object"
+            fields:
+              - { label: "Titre (début)", name: "titlePrefix", widget: "string" }
+              - { label: "Titre (accent)", name: "titleHighlight", widget: "string" }
+              - { label: "Introduction", name: "intro", widget: "richtext" }
+              - label: "Étapes"
+                name: "steps"
+                widget: "list"
+                label_singular: "étape"
+                fields:
+                  - { label: "Étape", name: "step", widget: "richtext" }
+
+          - label: "Bandeau CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "text", widget: "richtext" }
+              - { label: "Bouton principal", name: "primaryLabel", widget: "string" }
+              - { label: "Lien principal", name: "primaryHref", widget: "string" }
+              - { label: "Bouton secondaire", name: "secondaryLabel", widget: "string" }
+              - { label: "Lien secondaire", name: "secondaryHref", widget: "string" }

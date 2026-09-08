@@ -1,90 +1,20 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { md, mdInline } from '../lib/markdown';
+import karateData from '../content/config/karate.json';
 
-const vocabulary = [
-  {
-    title: 'Niveaux',
-    icon: 'lucide:layers',
-    items: [
-      { term: 'Gedan', def: 'Niveau bas, en dessous de la ceinture' },
-      { term: 'Chūdan', def: 'Niveau moyen, de la ceinture au cou' },
-      { term: 'Jōdan', def: 'Niveau haut, la tête' },
-    ],
-  },
-  {
-    title: 'Positions',
-    icon: 'lucide:footprints',
-    items: [
-      { term: 'Heisoku dachi', def: 'Debout, les pieds joints' },
-      { term: 'Musubi dachi', def: 'Debout, talons joints, pointes écartées' },
-      { term: 'Zenkutsu dachi', def: 'Fente avant : jambe avant fléchie, jambe arrière tendue' },
-      { term: 'Kokutsu dachi', def: 'Fente arrière : poids du corps sur la jambe arrière' },
-      { term: 'Kiba dachi', def: 'Position du cavalier' },
-      { term: 'Neko ashi dachi', def: 'Position du chat' },
-    ],
-  },
-  {
-    title: 'Défense',
-    icon: 'lucide:shield',
-    items: [
-      { term: 'Jōdan age uke', def: 'Défense haute par un mouvement remontant du bras' },
-      { term: 'Uchi uke', def: 'Défense de l\'intérieur vers l\'extérieur' },
-      { term: 'Gedan barai', def: 'Défense basse par un mouvement de balayage' },
-      { term: 'Shutō uke', def: 'Défense avec le tranchant de la main' },
-      { term: 'Teishō uke', def: 'Défense avec la paume' },
-    ],
-  },
-  {
-    title: 'Attaques',
-    icon: 'lucide:zap',
-    items: [
-      { term: 'Oi tsuki', def: 'Coup de poing en avançant' },
-      { term: 'Gyaku tsuki', def: 'Coup de poing opposé à la jambe avant' },
-      { term: 'Mae geri', def: 'Coup de pied de face direct' },
-      { term: 'Yoko geri', def: 'Coup de pied sur le côté' },
-      { term: 'Mawashi geri', def: 'Coup de pied circulaire' },
-      { term: 'Ushiro geri', def: 'Coup de pied retourné' },
-    ],
-  },
-];
-
-const counting = [
-  { jp: 'Ichi', fr: 'Un' },
-  { jp: 'Ni', fr: 'Deux' },
-  { jp: 'San', fr: 'Trois' },
-  { jp: 'Shi', fr: 'Quatre' },
-  { jp: 'Go', fr: 'Cinq' },
-  { jp: 'Roku', fr: 'Six' },
-  { jp: 'Shichi', fr: 'Sept' },
-  { jp: 'Hachi', fr: 'Huit' },
-  { jp: 'Kyū', fr: 'Neuf' },
-  { jp: 'Jū', fr: 'Dix' },
-];
-
-const dojoWords = [
-  { term: 'Seiza', def: 'Position agenouillée, assis sur les talons' },
-  { term: 'Rei', def: 'Saluez' },
-  { term: 'Mokuso', def: 'Courte méditation en position seiza' },
-  { term: 'Shomen-ni-rei', def: 'On salue vers l\'avant du dojo' },
-  { term: 'Sensei-ni-rei', def: 'On salue le professeur' },
-  { term: 'Onegai shimasu', def: 'Solliciter le sensei pour donner le cours' },
-  { term: 'Arigato gozaimashita', def: 'Remercier le sensei pour son cours' },
-  { term: 'Hajime', def: 'Commencez l\'exercice' },
-  { term: 'Mawate', def: 'Demi-tour' },
-  { term: 'Yame', def: 'Stopper l\'exercice' },
-  { term: 'Yoi', def: 'Soyez prêt' },
-  { term: 'Kamae', def: 'En garde' },
-];
 const base = import.meta.env.BASE_URL;
+const { hero, history, cards, senseiKase, katas, vocabulary, counting, dojoWords, ritual, cta } = karateData;
 ---
+
 <div class="pt-16">
   <section class="bg-gray-900 text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 50%, #fff 0%, transparent 60%), radial-gradient(circle at 80% 20%, #C41E3A 0%, transparent 50%);"></div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-      <p class="text-red-500 font-medium tracking-widest uppercase text-sm mb-4">Shotokan Karaté-dō</p>
-      <h1 class="text-4xl sm:text-6xl font-bold mb-6">L'art du <span class="text-red-500">karaté</span></h1>
+      <p class="text-red-500 font-medium tracking-widest uppercase text-sm mb-4">{hero.eyebrow}</p>
+      <h1 class="text-4xl sm:text-6xl font-bold mb-6">{hero.titlePrefix}<span class="text-red-500">{hero.titleHighlight}</span></h1>
       <p class="text-xl text-gray-300 font-light max-w-3xl mx-auto">
-        La voie de la main vide — une tradition japonaise, un art, une école de vie.
+        {hero.subtitle}
       </p>
     </div>
   </section>
@@ -93,86 +23,29 @@ const base = import.meta.env.BASE_URL;
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          L'Histoire <span class="text-red-600">du Karaté</span>
+          {history.titlePrefix}<span class="text-red-600">{history.titleHighlight}</span>
         </h2>
         <div class="w-20 h-1 bg-red-600 mx-auto"></div>
       </div>
 
-      <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
-        <p>
-          On situe l'origine des toutes premières méthodes de combat il y a environ{" "}
-          <strong class="text-gray-900">cinq mille ans en Inde</strong>. Ces techniques furent acquises
-          principalement par l'observation des animaux. Ce n'est qu'au VI<sup>ème</sup> siècle que les
-          techniques de combat furent importées en Chine par le moine{" "}
-          <strong class="text-gray-900">Bodhidharma</strong>{" "}
-          et se développèrent au monastère du Shaolin.
-        </p>
-        <p>
-          Occupée par les Chinois en 1429, l'île d'Okinawa interdit par décret le port d'armes à ses
-          habitants — ce qui ne fera pas sans susciter un développement considérable des anciennes
-          méthodes locales de combat. Ce n'est qu'au XIX<sup>ème</sup> siècle, lorsque l'île deviendra
-          province du Japon, que l'enseignement de l'Okinawa-té fut autorisé dans les écoles.
-        </p>
-        <p>
-          Le karaté que nous pratiquons aujourd'hui est la résultante de l'alliance, faite au
-          XVIII<sup>ème</sup> siècle, entre l'art du <em class="text-gray-900 not-italic font-medium">té</em>,
-          originaire d'Okinawa, et les arts chinois de la boxe du Shaolin — l'art du combat à main nue.
-        </p>
-        <p>
-          Ce n'est qu'à partir de <strong class="text-gray-900">1957</strong>, après la mort de maître
-          Funakoshi, que se dérouleront les premières compétitions. La France remportera son premier
-          championnat du monde en 1972 et créera en 1975 la FFKAMA (Fédération Française de Karaté et
-          Arts Martiaux Affinitaires). Aujourd'hui, on compte quatre grandes écoles : le Shotokan, le
-          Wadō-ryū, le Shitō-ryū et le Gōjū-ryū.
-        </p>
-      </div>
+      <div class="space-y-6 text-gray-600 text-lg leading-relaxed" set:html={md(history.body)}></div>
     </div>
   </section>
 
   <section class="py-20 bg-gray-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-          <div class="h-40 bg-gradient-to-br from-gray-800 to-gray-700 flex items-center justify-center">
-            <Icon name="lucide:landmark" class="w-12 h-12 text-red-500" />
+        {cards.map((card) => (
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class={`h-40 bg-gradient-to-br ${card.headerClass} flex items-center justify-center`}>
+              <Icon name={card.icon} class={`w-12 h-12 ${card.iconClass}`} />
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{card.title}</h3>
+              <div class="text-gray-600 text-sm leading-relaxed" set:html={md(card.body)}></div>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Le fondateur</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">
-              <strong class="text-gray-900">Gichin Funakoshi</strong> (1868-1957), surnommé le
-              père du karaté moderne, a introduit le karaté à Okinawa puis au Japon, et a donné
-              son nom au style Shotokan.
-            </p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-          <div class="h-40 bg-gradient-to-br from-red-800 to-red-700 flex items-center justify-center">
-            <Icon name="lucide:feather" class="w-12 h-12 text-white" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Le dojo de Montfort</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">
-              Notre club suit plus particulièrement la voie de{" "}
-              <strong class="text-gray-900">Sensei Taiji Kase</strong>, faisant la part belle à la
-              recherche de puissance et de rapidité.
-            </p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-          <div class="h-40 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-            <Icon name="lucide:swords" class="w-12 h-12 text-red-500" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Les katas</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">
-              Avec le <em class="not-italic font-medium text-gray-900">kihon</em> et le{" "}
-              <em class="not-italic font-medium text-gray-900">kumite</em>, l'étude des katas forme
-              le cœur de l'apprentissage du karaté.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -181,42 +54,17 @@ const base = import.meta.env.BASE_URL;
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Sensei <span class="text-red-600">Taiji Kase</span>
+          {senseiKase.titlePrefix}<span class="text-red-600">{senseiKase.titleHighlight}</span>
         </h2>
         <div class="w-20 h-1 bg-red-600 mx-auto"></div>
       </div>
 
-      <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
-        <p>
-          Taiji Kase est né au Japon le 9 février 1929. Après s'être orienté initialement vers le
-          judo (deuxième dan), il commence à pratiquer le karaté-dō à l'âge de 15 ans après avoir lu
-          le livre <em class="text-gray-900 font-medium not-italic">« Karate-dō Kyohan »</em> de
-          Sensei Gichin Funakoshi. Il devient son élève et entre au Shotokan Dojo en 1944.
-        </p>
-        <p>
-          Après avoir obtenu le 1<sup>er</sup> dan en 1946 puis le 3<sup>ème</sup> en 1949, Maître Kase
-          s'unit à la JKA (Japan Karate Association) afin de se consacrer professionnellement à
-          l'enseignement. Au milieu des années 60, il est chargé de la divulgation de la discipline à
-          travers le monde et arrive en 1967 à Paris.
-        </p>
-        <p>
-          Dès son arrivée, il se confronte aux champions des différentes méthodes de combat — le
-          résultat est sans appel. Suivront neuf années d'un enseignement exceptionnel durant lesquelles
-          s'écrira une page de l'histoire du <strong class="text-gray-900">karaté français</strong>.
-          Beaucoup de ce que nous apprenons aujourd'hui provient de Maître Kase : l'exécution des katas
-          en ura, go et go-ura, les techniques de mains ouvertes…
-        </p>
-        <p>
-          En 1989, avec Shirai Sensei, il fonde la <strong class="text-gray-900">World Karate Shotokan
-          Academy</strong> (WKSA). Il s'éteint le 24 novembre 2004, laissant derrière lui un héritage
-          considérable pour le karaté européen et mondial.
-        </p>
+      <div class="space-y-6 text-gray-600 text-lg leading-relaxed" set:html={md(senseiKase.body)}></div>
 
-        <blockquote class="border-l-4 border-red-600 pl-6 text-gray-700 italic font-medium">
-          « Karaté ni sente nashi » — Il n'y a pas d'attaque dans le karaté.
-          <footer class="text-gray-500 not-italic text-base mt-2">— Gichin Funakoshi</footer>
+        <blockquote class="border-l-4 border-red-600 pl-6 text-gray-700 italic font-medium mt-6">
+          <Fragment set:html={mdInline(senseiKase.quote)} />
+          <footer class="text-gray-500 not-italic text-base mt-2">{senseiKase.quoteAuthor}</footer>
         </blockquote>
-      </div>
     </div>
   </section>
 
@@ -224,39 +72,20 @@ const base = import.meta.env.BASE_URL;
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Les <span class="text-red-600">Katas</span>
+          {katas.titlePrefix}<span class="text-red-600">{katas.titleHighlight}</span>
         </h2>
         <div class="w-20 h-1 bg-red-600 mx-auto"></div>
       </div>
 
-      <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
-        <p>
-          En japonais, le mot <em class="text-gray-900 font-medium not-italic">kata</em> signifie
-          <strong class="text-gray-900">« forme »</strong>. Il évoque à la fois l'image d'une forme idéale
-          à reproduire ainsi que la fixation et la transmission de connaissances ayant pour base une
-          gestuelle codifiée.
-        </p>
-        <p>
-          Le kata se pratique seul ou en groupe. Dans les arts martiaux, il représente un combat réel
-          contre un adversaire, éventuellement imaginaire. Codifié de manière rigoureuse, il permet de
-          travailler en sécurité des techniques qui seraient dangereuses en combat libre, ou dans des
-          conditions proches de la réalité du combat.
-        </p>
-        <p>Le but du kata est double :</p>
-        <ul class="space-y-3 pl-2">
-          <li class="flex items-start gap-3">
-            <Icon name="lucide:check-circle" class="w-5 h-5 text-red-600 flex-shrink-0 mt-1" />
-            Travailler des gestes et postures dans des situations données, afin d'avoir un apprentissage « au calme ».
-          </li>
-          <li class="flex items-start gap-3">
-            <Icon name="lucide:check-circle" class="w-5 h-5 text-red-600 flex-shrink-0 mt-1" />
-            <span>
-              Découvrir les principes fondamentaux : gestion des distances (<em class="not-italic font-medium text-gray-900">ma ai</em>),
-              attitude et équilibre (<em class="not-italic font-medium text-gray-900">shisei</em>), coordination des mouvements.
-            </span>
-          </li>
+      <div class="space-y-6 text-gray-600 text-lg leading-relaxed" set:html={md(katas.body)}></div>
+        <ul class="space-y-3 pl-2 mt-6">
+          {katas.points.map((point) => (
+            <li class="flex items-start gap-3">
+              <Icon name={point.icon} class="w-5 h-5 text-red-600 flex-shrink-0 mt-1" />
+              <span><Fragment set:html={mdInline(point.text)} /></span>
+            </li>
+          ))}
         </ul>
-      </div>
     </div>
   </section>
 
@@ -264,16 +93,16 @@ const base = import.meta.env.BASE_URL;
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Vocabulaire <span class="text-red-600">technique</span>
+          {vocabulary.titlePrefix}<span class="text-red-600">{vocabulary.titleHighlight}</span>
         </h2>
         <p class="text-gray-600 max-w-2xl mx-auto">
-          Quelques repères pour découvrir le langage du dojo.
+          {vocabulary.intro}
         </p>
         <div class="w-20 h-1 bg-red-600 mx-auto mt-4"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {vocabulary.map((cat) => (
+        {vocabulary.categories.map((cat) => (
           <div class="bg-gray-50 rounded-xl p-6">
             <div class="flex items-center gap-3 mb-5">
               <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
@@ -301,12 +130,12 @@ const base = import.meta.env.BASE_URL;
         <div class="bg-white rounded-xl p-8 shadow-sm">
           <h3 class="text-xl font-bold text-gray-900 mb-6">
             <span class="inline-flex items-center gap-2">
-              <Icon name="lucide:hash" class="w-5 h-5 text-red-600" />
-              Compter jusqu'à 10
+              <Icon name={counting.icon} class="w-5 h-5 text-red-600" />
+              {counting.title}
             </span>
           </h3>
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
-            {counting.map((n, i) => (
+            {counting.numbers.map((n, i) => (
               <div class="text-center bg-gray-50 rounded-lg py-3">
                 <p class="text-2xl font-bold text-red-600">{i + 1}</p>
                 <p class="text-sm font-medium text-gray-900">{n.jp}</p>
@@ -319,12 +148,12 @@ const base = import.meta.env.BASE_URL;
         <div class="bg-white rounded-xl p-8 shadow-sm">
           <h3 class="text-xl font-bold text-gray-900 mb-6">
             <span class="inline-flex items-center gap-2">
-              <Icon name="lucide:message-square" class="w-5 h-5 text-red-600" />
-              Les mots du cours
+              <Icon name={dojoWords.icon} class="w-5 h-5 text-red-600" />
+              {dojoWords.title}
             </span>
           </h3>
           <div class="space-y-3">
-            {dojoWords.map((w) => (
+            {dojoWords.words.map((w) => (
               <div class="flex items-baseline gap-2">
                 <span class="font-semibold text-gray-900 w-44 flex-shrink-0">{w.term}</span>
                 <span class="text-gray-600 text-sm">{w.def}</span>
@@ -340,32 +169,19 @@ const base = import.meta.env.BASE_URL;
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Le rituel <span class="text-red-600">du salut</span>
+          {ritual.titlePrefix}<span class="text-red-600">{ritual.titleHighlight}</span>
         </h2>
         <div class="w-20 h-1 bg-red-600 mx-auto"></div>
       </div>
 
       <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
-        <p>
-          Le rituel du salut s'effectue au début du cours afin de demander aux partenaires et au
-          professeur de nous aider à progresser, et en fin de cours pour les remercier. Pendant le
-          salut, il est demandé de ne faire aucun bruit et de ne pas parler.
-        </p>
+        <p><Fragment set:html={mdInline(ritual.intro)} /></p>
 
         <ol class="space-y-4">
-          {[
-            'Le professeur (sensei) et ses élèves se font face en musubi dachi (talons joints, pointes des pieds écartés).',
-            'Au signal « seiza », agenouillez-vous face au kamiza (là où se trouve la photo du grand maître).',
-            'Lorsque le professeur annonce « mokuso », fermez les yeux et respirez profondément, afin de retrouver un esprit calme.',
-            'À la fin de la méditation (« mokuso yame »), rouvrez les yeux, toujours dans le calme et sans bruit.',
-            'Le professeur ordonne « shomen ni rei » : saluez en inclinant le buste vers l\'avant, mains au sol quelques instants.',
-            'Le professeur revient face aux élèves. Au signal « sensei ni rei », saluez puis revenez en seiza.',
-            'Le professeur ordonne « otagaï ni rei » : saluez de nouveau.',
-            'Le professeur se relève — « kiritsu » — puis saluez une dernière fois debout en musubi dachi.',
-          ].map((step, i) => (
+          {ritual.steps.map((step, i) => (
             <li class="flex items-start gap-4">
               <span class="w-8 h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center font-bold flex-shrink-0">{i + 1}</span>
-              <span>{step}</span>
+              <span><Fragment set:html={mdInline(step.step)} /></span>
             </li>
           ))}
         </ol>
@@ -375,23 +191,22 @@ const base = import.meta.env.BASE_URL;
 
   <section class="bg-gray-900 text-white py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold mb-4">Envie de découvrir le karaté ?</h2>
+      <h2 class="text-3xl font-bold mb-4">{cta.title}</h2>
       <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
-        Que vous soyez enfant, adolescent ou adulte, rejoignez le tatami de Montfort-sur-Meu dans un
-        esprit convivial.
+        <Fragment set:html={mdInline(cta.text)} />
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href={`${base}#horaires`}
+          href={`${base}${cta.primaryHref}`}
           class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded transition-colors"
         >
-          Voir les horaires
+          {cta.primaryLabel}
         </a>
         <a
-          href={`${base}#tarifs`}
+          href={`${base}${cta.secondaryHref}`}
           class="inline-block border border-white/30 hover:border-white text-white font-semibold px-8 py-3 rounded transition-colors"
         >
-          Découvrir les tarifs
+          {cta.secondaryLabel}
         </a>
       </div>
     </div>
