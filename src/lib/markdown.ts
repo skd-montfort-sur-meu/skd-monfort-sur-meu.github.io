@@ -1,11 +1,13 @@
 import { marked } from 'marked';
 
-marked.use({ mangle: false, headerIds: false });
+const SYNC_OPTIONS = { async: false } as const;
+
+marked.use({ ...SYNC_OPTIONS });
 
 export function md(source: string): string {
-  return marked.parse(source);
+  return marked.parse(source, SYNC_OPTIONS);
 }
 
 export function mdInline(source: string): string {
-  return marked.parseInline(source);
+  return marked.parseInline(source, SYNC_OPTIONS);
 }

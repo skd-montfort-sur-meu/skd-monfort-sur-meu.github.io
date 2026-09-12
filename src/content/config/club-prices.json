@@ -1,0 +1,23 @@
+{
+  "prices": [
+    {
+      "category": "Enfants",
+      "price": 130,
+      "description": "De 6 à 12 ans"
+    },
+    {
+      "category": "Adolescents",
+      "price": 150,
+      "description": "De 12 à 17 ans"
+    },
+    {
+      "category": "Adultes",
+      "price": 180,
+      "description": "18 ans et plus"
+    }
+  ],
+  "membership": {
+    "price": 20,
+    "description": "Adhésion au club, une seule par famille"
+  }
+}

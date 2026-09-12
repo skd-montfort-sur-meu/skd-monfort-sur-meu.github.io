@@ -1,91 +1,14 @@
 {
-  "president": "Pierrick Lemou",
-  "treasurer": "Ismaël Delaunay",
+  "name": "Shotokan Karaté Montfort",
+  "fullName": "Shotokan Karaté-dō Montfort-sur-Meu",
+  "address": "Dojo Coesec, Route d'Iffendic, 35160 Montfort-sur-Meu",
+  "email": "skdmontfort@gmail.com",
+  "phone": "06 72 08 56 81",
   "phone2": "06 27 63 23 90",
   "facebook": "https://www.facebook.com/Shotokan-Karate-Do-Montfort-sMeu-502576590248219",
-  "prices": [
-    {
-      "category": "Enfants",
-      "price": 130,
-      "description": "De 6 à 12 ans"
-    },
-    {
-      "category": "Adolescents",
-      "price": 150,
-      "description": "De 12 à 17 ans"
-    },
-    {
-      "category": "Adultes",
-      "price": 180,
-      "description": "18 ans et plus"
-    }
-  ],
-  "name": "Shotokan Karaté Montfort",
-  "phone": "06 72 08 56 81",
-  "teachers": [
-    {
-      "name": "Pierrick Lemou",
-      "grade": "5ème Dan Karaté BPJEPS",
-      "description": "Fondateur et responsable pédagogique du club"
-    },
-    {
-      "name": "Frédéric Gelin",
-      "grade": "3ème Dan Karaté BPJEPS, 1er Dan Judo",
-      "description": "Enseignant"
-    },
-    {
-      "name": "Victoria Bureau",
-      "grade": "2ème Dan Karaté DIF",
-      "description": "Enseignante"
-    }
-  ],
   "instagram": "https://www.instagram.com/skdmontfort/",
-  "address": "Dojo Coesec, Route d'Iffendic, 35160 Montfort-sur-Meu",
-  "membership": {
-    "price": 20,
-    "description": "Adhésion au club, une seule par famille"
-  },
-  "schedule": [
-    {
-      "day": "Mardi",
-      "time": "18h15 - 19h30",
-      "audience": "Enfants (6-12 ans) et adolescents (12-17 ans)"
-    },
-    {
-      "day": "Mardi",
-      "time": "19h30 - 21h00",
-      "audience": "Adultes"
-    },
-    {
-      "day": "Jeudi",
-      "time": "10h00 - 12h00",
-      "audience": "Seniors — Espace Sport'Iff, Iffendic"
-    },
-    {
-      "day": "Jeudi",
-      "time": "18h15 - 19h30",
-      "audience": "Enfants (6-12 ans) et adolescents (12-17 ans)"
-    },
-    {
-      "day": "Jeudi",
-      "time": "19h30 - 21h00",
-      "audience": "Adultes"
-    }
-  ],
+  "president": "Pierrick Lemou",
+  "treasurer": "Ismaël Delaunay",
   "secretary": "Christophe Segouin",
-  "fullName": "Shotokan Karaté-dō Montfort-sur-Meu",
-  "email": "skdmontfort@gmail.com",
-  "about": {
-    "titlePrefix": "Le Shotokan",
-    "titleHighlight": "Karaté-dō",
-    "body": "Le Karaté-Do renferme, comme d'autres arts martiaux, diverses variantes ou styles. Celui pratiqué à Montfort-sur-Meu est le style **Shotokan-ryu**, développé par **Gichin Funakoshi**. Il est considéré comme l'un des plus puissants, de par notamment des positions basses, un fort travail du bassin et des techniques directes.\n\nNous nous inspirons plus particulièrement à Montfort-sur-Meu vers la voie de **Senseï Taiji Kase**, faisant la part belle à la recherche de puissance et de rapidité.\n\nLe Karaté-Do est une méthode qui développe autant le corps que l'esprit. Sa pratique, à long terme, conduit à la recherche de l'unité entre les deux. C'est à la fois un système d'auto-défense, un art martial qui parfait le caractère (respect, maîtrise de soi, confiance en soi, anticipation...), une pratique sportive, mais aussi un plaisir !\n\nN'oublions pas toutefois qu'art sous-entend recherche personnelle et créativité. Celle-ci s'exerce sur le plan technique, mais aussi du point de vue moral ou philosophique. À Montfort-sur-Meu, le Karaté-Do est enseigné dans un esprit convivial, où chaque pratiquant travaille à son rythme, selon ses motivations, ses aspirations et son potentiel.",
-    "quote": "Chacun pourra ainsi y trouver sa voie, un esprit sain dans un corps sain."
-  },
-  "features": [
-    { "icon": "lucide:shield", "title": "Auto-défense", "desc": "Un système d'auto-défense efficace" },
-    { "icon": "lucide:heart-pulse", "title": "Bien-être", "desc": "Corps et esprit en harmonie" },
-    { "icon": "lucide:users", "title": "Convivialité", "desc": "Chacun progresse à son rythme" },
-    { "icon": "lucide:award", "title": "Enseignants gradés", "desc": "Diplomés et passionnés" }
-  ],
   "footerDescription": "Club de karaté affilié à la Fédération Française de Karaté. Cours pour enfants, adolescents et adultes."
 }

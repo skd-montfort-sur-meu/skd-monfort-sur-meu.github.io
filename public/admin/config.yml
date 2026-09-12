@@ -33,6 +33,11 @@ collections:
           - { label: "Secrétaire", name: "secretary", widget: "string" }
           - { label: "Description (pied de page)", name: "footerDescription", widget: "text" }
 
+      - name: "presentation"
+        label: "Présentation"
+        file: "src/content/config/club-about.json"
+        format: "json"
+        fields:
           - label: "Présentation (page d'accueil)"
             name: "about"
             widget: "object"
@@ -64,6 +69,11 @@ collections:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Description", name: "desc", widget: "string" }
 
+      - name: "enseignants"
+        label: "Enseignants"
+        file: "src/content/config/club-teachers.json"
+        format: "json"
+        fields:
           - label: "Enseignants"
             name: "teachers"
             widget: "list"
@@ -73,6 +83,11 @@ collections:
               - { label: "Grade", name: "grade", widget: "text" }
               - { label: "Rôle", name: "description", widget: "string" }
 
+      - name: "horaires"
+        label: "Horaires"
+        file: "src/content/config/club-schedule.json"
+        format: "json"
+        fields:
           - label: "Horaires"
             name: "schedule"
             widget: "list"
@@ -92,6 +107,11 @@ collections:
               - { label: "Horaires", name: "time", widget: "string" }
               - { label: "Public concerné", name: "audience", widget: "string" }
 
+      - name: "tarifs"
+        label: "Tarifs"
+        file: "src/content/config/club-prices.json"
+        format: "json"
+        fields:
           - label: "Tarifs"
             name: "prices"
             widget: "list"

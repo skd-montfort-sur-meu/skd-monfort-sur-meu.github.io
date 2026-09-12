@@ -1,0 +1,14 @@
+{
+  "about": {
+    "titlePrefix": "Le Shotokan",
+    "titleHighlight": "Karaté-dō",
+    "body": "Le Karaté-Do renferme, comme d'autres arts martiaux, diverses variantes ou styles. Celui pratiqué à Montfort-sur-Meu est le style **Shotokan-ryu**, développé par **Gichin Funakoshi**. Il est considéré comme l'un des plus puissants, de par notamment des positions basses, un fort travail du bassin et des techniques directes.\n\nNous nous inspirons plus particulièrement à Montfort-sur-Meu vers la voie de **Senseï Taiji Kase**, faisant la part belle à la recherche de puissance et de rapidité.\n\nLe Karaté-Do est une méthode qui développe autant le corps que l'esprit. Sa pratique, à long terme, conduit à la recherche de l'unité entre les deux. C'est à la fois un système d'auto-défense, un art martial qui parfait le caractère (respect, maîtrise de soi, confiance en soi, anticipation...), une pratique sportive, mais aussi un plaisir !\n\nN'oublions pas toutefois qu'art sous-entend recherche personnelle et créativité. Celle-ci s'exerce sur le plan technique, mais aussi du point de vue moral ou philosophique. À Montfort-sur-Meu, le Karaté-Do est enseigné dans un esprit convivial, où chaque pratiquant travaille à son rythme, selon ses motivations, ses aspirations et son potentiel.",
+    "quote": "Chacun pourra ainsi y trouver sa voie, un esprit sain dans un corps sain."
+  },
+  "features": [
+    { "icon": "lucide:shield", "title": "Auto-défense", "desc": "Un système d'auto-défense efficace" },
+    { "icon": "lucide:heart-pulse", "title": "Bien-être", "desc": "Corps et esprit en harmonie" },
+    { "icon": "lucide:users", "title": "Convivialité", "desc": "Chacun progresse à son rythme" },
+    { "icon": "lucide:award", "title": "Enseignants gradés", "desc": "Diplomés et passionnés" }
+  ]
+}

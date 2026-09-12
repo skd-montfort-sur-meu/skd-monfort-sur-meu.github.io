@@ -1,0 +1,29 @@
+{
+  "schedule": [
+    {
+      "day": "Mardi",
+      "time": "18h15 - 19h30",
+      "audience": "Enfants (6-12 ans) et adolescents (12-17 ans)"
+    },
+    {
+      "day": "Mardi",
+      "time": "19h30 - 21h00",
+      "audience": "Adultes"
+    },
+    {
+      "day": "Jeudi",
+      "time": "10h00 - 12h00",
+      "audience": "Seniors — Espace Sport'Iff, Iffendic"
+    },
+    {
+      "day": "Jeudi",
+      "time": "18h15 - 19h30",
+      "audience": "Enfants (6-12 ans) et adolescents (12-17 ans)"
+    },
+    {
+      "day": "Jeudi",
+      "time": "19h30 - 21h00",
+      "audience": "Adultes"
+    }
+  ]
+}

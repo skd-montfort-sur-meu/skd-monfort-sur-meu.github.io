@@ -1,12 +1,8 @@
 ---
-import clubData from '../content/config/club.json';
+import clubData from '../content/config/club-prices.json';
 import { Icon } from 'astro-icon/components';
 
-const categoryIcons = {
-  'Enfants': 'lucide:baby',
-  'Adolescents': 'lucide:sparkles',
-  'Adultes': 'lucide:user',
-};
+const categoryIcons: Record<string, string> = {'Enfants': 'lucide:baby','Adolescents': 'lucide:sparkles','Adultes': 'lucide:user',};
 ---
 <section id="tarifs" class="py-20 bg-gray-50">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
