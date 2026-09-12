@@ -1,0 +1,64 @@
+import { describe, expect, it } from 'vitest';
+import { capitalize, formatEvents, splitUpcomingPast } from '../../src/lib/competitions';
+import type { CompetitionEvent } from '../../src/lib/competitions';
+
+const events: CompetitionEvent[] = [
+  { title: 'Championnat', categories: 'Kata', date: '2026-10-04' },
+  { title: 'Coupe', categories: 'Combat', date: '2026-10-03' },
+  { title: 'Interclubs', categories: 'Kata', date: '2026-01-10' },
+];
+
+describe('capitalize', () => {
+  it('capitalize the first letter', () => {
+    expect(capitalize('dimanche')).toBe('Dimanche');
+  });
+
+  it('not break on an empty string', () => {
+    expect(capitalize('')).toBe('');
+  });
+});
+
+describe('formatEvents', () => {
+  const formatted = formatEvents(events);
+
+  it('sort events by ascending date', () => {
+    expect(formatted.map((e) => e.date)).toEqual(['2026-01-10', '2026-10-03', '2026-10-04']);
+  });
+
+  it('fill in the date fields', () => {
+    const coupe = formatted.find((e) => e.title === 'Coupe');
+    expect(coupe).toMatchObject({
+      day: 3,
+      month: 'Octobre',
+      weekday: 'Samedi',
+      dateLabel: 'samedi 3 octobre 2026',
+    });
+  });
+
+  it('keep the original fields', () => {
+    const coupe = formatted.find((e) => e.title === 'Coupe');
+    expect(coupe?.categories).toBe('Combat');
+    expect(coupe?.date).toBe('2026-10-03');
+  });
+});
+
+describe('splitUpcomingPast', () => {
+  const today = new Date('2026-09-12T00:00:00');
+
+  it('put earlier events in past', () => {
+    const { past } = splitUpcomingPast(events, today);
+    expect(past.map((e) => e.date)).toEqual(['2026-01-10']);
+  });
+
+  it('put today\u2019s and future events in upcoming', () => {
+    const { upcoming } = splitUpcomingPast(events, today);
+    expect(upcoming.map((e) => e.date)).toEqual(['2026-10-03', '2026-10-04']);
+  });
+
+  it('treat an event on today as upcoming', () => {
+    const sameDay: CompetitionEvent[] = [{ title: 'Aujourd\u2019hui', categories: '', date: '2026-09-12' }];
+    const { upcoming, past } = splitUpcomingPast(sameDay, today);
+    expect(upcoming).toHaveLength(1);
+    expect(past).toHaveLength(0);
+  });
+});

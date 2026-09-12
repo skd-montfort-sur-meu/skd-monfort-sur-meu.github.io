@@ -1,0 +1,19 @@
+{
+  "teachers": [
+    {
+      "name": "Pierrick Lemou",
+      "grade": "5ème Dan Karaté BPJEPS",
+      "description": "Fondateur et responsable pédagogique du club"
+    },
+    {
+      "name": "Frédéric Gelin",
+      "grade": "3ème Dan Karaté BPJEPS, 1er Dan Judo",
+      "description": "Enseignant"
+    },
+    {
+      "name": "Victoria Bureau",
+      "grade": "2ème Dan Karaté DIF",
+      "description": "Enseignante"
+    }
+  ]
+}

@@ -1,34 +1,12 @@
 ---
-import { readdirSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Icon } from 'astro-icon/components';
+import { listGalleryPhotos } from '../lib/gallery';
 
 const base = import.meta.env.BASE_URL;
 const galleryDir = join(process.cwd(), 'public', 'images', 'gallery');
-const manifestFile = join(process.cwd(), 'public', 'images', 'gallery', 'photos.json');
 
-let photos = [];
-
-if (existsSync(manifestFile)) {
-  try {
-    const manifest = JSON.parse(readFileSync(manifestFile, 'utf-8'));
-    photos = manifest.map((p) => ({ src: `${base}${p.src.replace(/^\//, '')}`, alt: 'Photo du club' }));
-  } catch {
-    photos = [];
-  }
-}
-
-if (photos.length === 0) {
-  const files = readdirSync(galleryDir)
-    .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f))
-    .sort((a, b) => {
-      const dateA = a.match(/^(\d{4}-\d{2}-\d{2})/);
-      const dateB = b.match(/^(\d{4}-\d{2}-\d{2})/);
-      if (dateA && dateB) return b.localeCompare(a);
-      return a.localeCompare(b);
-    });
-  photos = files.map((f) => ({ src: `${base}images/gallery/${f}`, alt: 'Photo du club' }));
-}
+let photos = listGalleryPhotos(galleryDir, base);
 ---
 <section class="py-20 bg-white pt-28">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,7 +80,7 @@ if (photos.length === 0) {
   const lightboxNext = document.getElementById('lightbox-next');
   let currentIndex = 0;
 
-  function openLightbox(index) {
+  function openLightbox(index: number) {
     currentIndex = index;
     updateImage();
     lightbox?.classList.remove('hidden');
@@ -118,7 +96,7 @@ if (photos.length === 0) {
 
   function updateImage() {
     const item = items[currentIndex];
-    if (item && lightboxImg) {
+    if (item && lightboxImg instanceof HTMLImageElement) {
       lightboxImg.src = item.dataset.src ?? '';
       lightboxImg.alt = item.dataset.alt ?? '';
     }
