@@ -39,6 +39,8 @@ npm run cms
 
 Puis accéder au panneau d'administration sur `/admin`.
 
+En production, l'interface d'administration est servie par Netlify (`/admin`) ; la commande ci-dessus ne sert qu'au développement local (backend local Decap).
+
 ## Structure du projet
 
 ```text
@@ -110,9 +112,10 @@ Les tests smoke lisent `dist/` : lancer `npm run build` avant `npm test` (la CI 
 
 ## Déploiement
 
-- **CI** — `.github/workflows/ci.yml` : check + build + tests sur chaque push et pull request
-- **GitHub Pages** — `.github/workflows/deploy.yml` : déploiement déclenché par la réussite de CI sur `main` (`workflow_run`) ou manuel (`workflow_dispatch`)
-- **Netlify** — Alternative possible via `netlify.toml`
+- **Site public — GitHub Pages** — `skd-montfort-sur-meu.github.io`. Build + déploiement via `.github/workflows/deploy.yml`, déclenché par la réussite de CI sur `main` (`workflow_run`) ou manuellement (`workflow_dispatch`).
+- **Administration & preview — Netlify** — Sert l'interface d'administration (`/admin`, Decap CMS) ainsi qu'une preview du site complet (build `npm run build` via `netlify.toml`) pour valider le contenu avant publication.
+- **Flux de contenu** — Une modification éditée via Decap est commitée sur `main` (backend GitHub), ce qui relance la CI puis le déploiement du site public sur GitHub Pages.
+- **CI** — `.github/workflows/ci.yml` : check + build + tests sur chaque push et pull request.
 
 ## Prérequis
 
